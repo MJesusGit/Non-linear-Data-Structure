@@ -1,12 +1,14 @@
 package graph;
 
+import org.apache.poi.ss.formula.functions.T;
+
 import graphsDSESIUCLM.*;
-public class DecoratedElement<T> implements Element{
+public class DecoratedElement<Character> implements Element{
 	private String ID;
 	private T name;
 	private int value;
 	private boolean visited;
-	private DecoratedElement<T> parent;
+	private DecoratedElement<Character> parent;
 	
 	public DecoratedElement(String iD, T name, int value) {
 		ID = iD;

@@ -25,7 +25,7 @@ public static void menu() {
      
     try {
 	    while(!exit){
-	       System.out.println("-----------------------------\nWELCOME TO US STAR WARS PROGRAM\n-----------------------------\n[1]. Statistics of the file\n[2]. characters that are not related to each other\n[3]. Holo-message secretly through trusted intermediaries\n[4]. Exit\n\nChoose an option:");
+	       System.out.println("-----------------------------\nWELCOME TO OUR STAR WARS PROGRAM\n-----------------------------\n[1]. Statistics of the file\n[2]. characters that are not related to each other\n[3]. Holo-message secretly through trusted intermediaries\n[4]. Exit\n\nChoose an option:");
 	       option = reader.nextInt();
 	       switch(option){
            case 1:
@@ -55,43 +55,37 @@ public static void menu() {
 }
 
 
-
+//C:\Users\Usuario\eclipse-workspace\data-structure\src\graph\starwars-pers.csv
 
 
 	public static void prueba1() {
 		System.out.println("Write the direction of the File:");
-
 		Scanner read = new Scanner(System.in);
 		String path = read.nextLine();
-		read.useDelimiter("[,\n]");
 		String line = "";
-		String str = null;
 		String[] tokens;
+		LinkedList<Character> list_characters = new LinkedList();
 		try {
-			FileReader leer_archivo = new FileReader(path);
-			BufferedReader bufferdefault = new BufferedReader(leer_archivo);
-			boolean esPrimeraLinea = true;
-			while ((line = bufferdefault.readLine()) != null) {
-				// Si es la primera línea, continuamos con la siguiente
-				if (esPrimeraLinea) {
-					esPrimeraLinea = false;
-					continue;
-				}
-				// Ahora necesito deshacerme de la primera linea
-				tokens = line.split(",");
-				for (int i = 0; i < tokens.length; i++) {
-					String id = tokens[i];
-					String name = tokens[i+1];
-					int value = Integer.parseInt(tokens[i+2]);
-					DecoratedElement<String> pers = new DecoratedElement<String>(id, name,(int)value);
-					System.err.println(pers + "\n");
-				}
-
+			FileReader file = new FileReader(path);
+			Scanner reader = new Scanner(file);
+			reader.nextLine();
+			while (reader.hasNextLine()) {
+				line=reader.nextLine();
+				tokens = line.split(";");
+				String id = tokens[0];
+				String name = tokens[1];
+				int value = Integer.parseInt(tokens[2]);
+				Character ch = new Character(id,name,value);
+				list_characters.add(ch);
 			}
+			
+			for(int i=0; i<list_characters.size();i++) {
+			System.out.println(list_characters.get(i));
+			}
+			
 		} catch (IOException e) {
 			System.err.println("Error");
 			System.err.println(e.getMessage());
 		}
 	}
-
 }
