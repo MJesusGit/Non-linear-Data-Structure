@@ -7,6 +7,13 @@ public class DecoratedElement<T> implements Element{
 	private int value;
 	private boolean visited;
 	private DecoratedElement<T> parent;
+	
+	public DecoratedElement(String iD, T name, int value) {
+		ID = iD;
+		this.name = name;
+		this.value = value;
+	}
+
 	public DecoratedElement(String key, T name, int value, boolean visited, DecoratedElement<T> parent) {
 		ID = key;
 		this.name = name;

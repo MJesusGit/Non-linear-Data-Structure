@@ -45,15 +45,16 @@ public class ReadFile {
 				while(celdas.hasNext()) {
 					celda= celdas.next();
 					celdas=fila.cellIterator();
-					if(type.equals(CellType.STRING)) {
-						//ID
+					
+					/*if(type.equals(CellType.STRING)) {
+						System.out.println(type);
 						
 					}else if(type.equals(CellType.STRING)) {
 						//nombre
 						
 					}else if(type.equals(CellType.NUMERIC)) {
 						//iteracciones
-					}
+					}*/
 				}
 			}
 					
