@@ -29,7 +29,7 @@ public static void menu() {
 	       option = reader.nextInt();
 	       switch(option){
            case 1:
-        	   prueba1();
+        	   //aqui va el metodo de leer el fichero
                break;
            case 2:
                System.out.println("Has seleccionado la opcion 2");
@@ -58,34 +58,5 @@ public static void menu() {
 //C:\Users\Usuario\eclipse-workspace\data-structure\src\graph\starwars-pers.csv
 
 
-	public static void prueba1() {
-		System.out.println("Write the direction of the File:");
-		Scanner read = new Scanner(System.in);
-		String path = read.nextLine();
-		String line = "";
-		String[] tokens;
-		LinkedList<Character> list_characters = new LinkedList();
-		try {
-			FileReader file = new FileReader(path);
-			Scanner reader = new Scanner(file);
-			reader.nextLine();
-			while (reader.hasNextLine()) {
-				line=reader.nextLine();
-				tokens = line.split(";");
-				String id = tokens[0];
-				String name = tokens[1];
-				int value = Integer.parseInt(tokens[2]);
-				Character ch = new Character(id,name,value);
-				list_characters.add(ch);
-			}
-			
-			for(int i=0; i<list_characters.size();i++) {
-			System.out.println(list_characters.get(i));
-			}
-			
-		} catch (IOException e) {
-			System.err.println("Error");
-			System.err.println(e.getMessage());
-		}
-	}
+	
 }
