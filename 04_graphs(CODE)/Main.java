@@ -8,6 +8,10 @@ import java.io.Reader;
 
 import java.util.*;
 
+import graph.Character;
+import graphsDSESIUCLM.Graph;
+import graphsDSESIUCLM.TreeMapGraph;
+
 public class Main {
 
 	public static final String SEPARATOR = ";";
@@ -29,7 +33,16 @@ public static void menu() {
 	       option = reader.nextInt();
 	       switch(option){
            case 1:
-        	   //aqui va el metodo de leer el fichero
+        	   System.out.println("Write the direction of the characters file");
+        	   Scanner read = new Scanner(System.in);
+        	   String pathCh = read.nextLine();
+        	   System.out.println("Write the direction of the links file");
+        	   String pathLk = read.nextLine();
+        	   ReadFile readFile = new ReadFile(pathCh, pathLk);
+        	   LinkedList<Character> list_characters = new LinkedList();
+        	   list_characters = readFile.readCharacters();
+        	   Graph<DecoratedElement<Character>, DecoratedElement<Integer>> gr = new TreeMapGraph<DecoratedElement<Character>, DecoratedElement<Integer>>();
+        	   gr = readFile.readLinks(list_characters);
                break;
            case 2:
                System.out.println("Has seleccionado la opcion 2");

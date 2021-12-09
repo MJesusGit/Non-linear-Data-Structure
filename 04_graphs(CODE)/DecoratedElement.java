@@ -3,17 +3,21 @@ package graph;
 import graphsDSESIUCLM.*;
 
 public class DecoratedElement<Character> implements Element{
-	
+	private String ID;
 	private Character element;
 	private boolean visited;
 	private DecoratedElement<Character> parent;
 	private int distance;
 	
-	public DecoratedElement(Character element) {
+	public DecoratedElement(String key, Character element) {
 		this.element = element;
+		ID = key;
 		visited = false;
 		parent = null;
 		distance = 0;
+	}
+	public void setID(String iD) {
+		ID = iD;
 	}
 	@Override
 	public String getID() {
