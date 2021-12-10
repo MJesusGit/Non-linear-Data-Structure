@@ -46,7 +46,14 @@ public static void menu() {
         	   //gr = readFile.readLinks(list_characters);
                break;
            case 2:
-               System.out.println("Has seleccionado la opcion 2");
+        	   boolean find=Objectives.subsets(gr);
+        	   
+               if(!find) {
+            	   System.out.print("There is not subsets");
+            	 
+               }else {
+            	   System.out.print("There is  subsets");
+               }
                break;
             case 3:
                System.out.println("Has seleccionado la opcion 3");
