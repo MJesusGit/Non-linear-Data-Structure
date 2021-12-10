@@ -1,93 +1,46 @@
 package graph;
 
-import java.util.Iterator;
-import java.util.Stack;
+import java.io.*;
+import java.util.*;
 
-import graphsDSESIUCLM.Edge;
-import graphsDSESIUCLM.Graph;
+import graph.Character;
+import graphsDSESIUCLM.*;
 
 public class Objectives {
 
-	// metodos aparatdo a
+	public void moreRelations(Graph<DecoratedElement<Character>, DecoratedElement<Integer>> gr) {
+		int nInteractions = 0;
+		int maxInteractions = 0;
+		Stack<Vertex<DecoratedElement<Character>>> largestVertex = new Stack();
+		Vertex<DecoratedElement<Character>> actualVertex = null;
+		Iterator<Vertex<DecoratedElement<Character>>> verIterator;
+		Iterator<Edge<DecoratedElement<Integer>>> edgeIterator;
 
-	// metodo dfs apartado b--> grafo conexo
-	
-	
-	
-	//queda el metodo DFS
-	public static void DFS(Graph gr , Vertex<DecoratedElement> v) {
-		Iterator <Edge> it =null;
-		Vertex<DecoratedElement> w =null;
-		Edge e =null;
-		v.getElement().setVisited(true);
-		it=gr.incidentEdges(v);
-		while(it.hasNext()) {
-			e=it.next();
-			w=gr.opposite(v, e);
-			if(!w.getElement().getVisited()) {
-				DFS(gr,w);
+		verIterator = gr.getVertices();
+		while (verIterator.hasNext()) {
+			actualVertex = verIterator.next();
+			edgeIterator = gr.incidentEdges(actualVertex);
+
+			while (edgeIterator.hasNext()) {
+				edgeIterator.next();
+				nInteractions++;
 			}
-		}
-	}
-	public static boolean subsets(Graph gr) {
-		boolean subset=true;
-		Vertex<DecoratedElement> it= null;
-		it=gr.getVertex();
-		if(it.hasNext()) {
-			aux=it.next();
-			DFS(gr,aux);			
-		}
-		it=gr.getVertices();
-		while(it.hasNext() && subset) {
-			aux=it.next();
-			subset=aux.getElement().getVisited();			
-		}
-		return subset;
-	}
-	
-	// metodo bfs aparatdo c
-		// Debo comprobar que el nombre que entra en el metodo esta en el grafo y
-		// pasarlo directamente como vertice, asi es más sencillo.
-		public Stack<DecoratedElement<Character>> holo_message(Graph gr, Vertex<DecoratedEelement<Character>> origin,Vertex<DecoratedElement<Character>> destino,String chOrigin,String chTarget, incident){
-			boolean find=false;
-			Queue<Vertex<DecoratedElement<Character>>> q = new LinkedBlockingQueue();
-			Vertex<DecoratedElement<Character>> u,v=null;
-			DecoratedElement<Character> z;
-			Edge e;
-			Iterator <Edge> it= null;
-				while(!q.isEmpty() && !find) {
-					u=q.remove();
-					it=g.incidentEdges(u);
-					while(it.hasNext()&& !find) {
-						e=it.next();
-						v=g.opposite(u, e);
-						if(!(v.getElement().getVisited())&& (condiciondel ejer)) {
-							v.getElement().setVisited(true);
-							v.getElement().setAntecessor(u.getElement());
-							q.offer(v);
-							if(v.getElement().equals(chtatger)) {
-								find=true;
-							}
-						}
-						
-					}
-					
+			if (nInteractions == maxInteractions) {
+				largestVertex.push(actualVertex);
+			} else if (nInteractions > maxInteractions) {
+				while (!largestVertex.isEmpty()) {
+					largestVertex.pop();
 				}
-				if(find) {
-					z=v.getElement().getAntecesor();
-					while(z!=null) {
-						if(z.element().getName==chorigin && !z.equals(origin.getElement())) {
-							//añado el vertice a la pila que quiero devolver, voy a atner que darle la vuelta para que salga en el orden
-						}
-					}
-				}
-				
-				return path;		
+				largestVertex.push(actualVertex);
+				maxInteractions = nInteractions;
+			}
+			nInteractions = 0;
 		}
+		System.out.println("Most sociable character: ");
 
-
-
-
+		while (!largestVertex.isEmpty()) {
+			System.out.println("\t" + largestVertex.pop().getElement().getElement());
+		}
+		System.out.println("Number of interactions with different characters: " + maxInteractions);
+	}
 }
-
-	

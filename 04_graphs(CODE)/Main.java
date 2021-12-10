@@ -26,7 +26,8 @@ public static void menu() {
 	Scanner reader = new Scanner(System.in);
     boolean exit = false;
     int option; //Guardaremos la opcion del usuario
-     
+    Objectives objectives = new Objectives();
+    
     try {
 	    while(!exit){
 	       System.out.println("-----------------------------\nWELCOME TO OUR STAR WARS PROGRAM\n-----------------------------\n[1]. Statistics of the file\n[2]. characters that are not related to each other\n[3]. Holo-message secretly through trusted intermediaries\n[4]. Exit\n\nChoose an option:");
@@ -42,6 +43,8 @@ public static void menu() {
         	   Graph<DecoratedElement<Character>, DecoratedElement<Integer>> gr = new TreeMapGraph<DecoratedElement<Character>, DecoratedElement<Integer>>();
         	   gr = readFile.readCharacters();
         	   gr = readFile.readLinks(gr);
+        	   objectives.moreRelations(gr);
+        	   
                break;
            case 2:
                System.out.println("Has seleccionado la opcion 2");
@@ -67,7 +70,7 @@ public static void menu() {
 }
 
 
-//C:\Users\Usuario\eclipse-workspace\data-structure\src\graph\starwars-pers.csv
+
 
 
 	
