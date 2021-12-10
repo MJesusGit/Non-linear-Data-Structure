@@ -39,10 +39,11 @@ public static void menu() {
         	   System.out.println("Write the direction of the links file");
         	   String pathLk = read.nextLine();
         	   ReadFile readFile = new ReadFile(pathCh, pathLk);
-        	   LinkedList<Character> list_characters = new LinkedList();
-        	   list_characters = readFile.readCharacters();
-        	   Graph<DecoratedElement<Character>, DecoratedElement<Integer>> gr = new TreeMapGraph<DecoratedElement<Character>, DecoratedElement<Integer>>();
-        	   gr = readFile.readLinks(list_characters);
+        	   Graph gr = new TreeMapGraph<>();
+        	   gr = readFile.readCharacters();
+        	   readFile.readLinks(gr);
+        	   //Graph<DecoratedElementCharacter<Character>, DecoratedElementCharacter<Integer>> gr = new TreeMapGraph<DecoratedElementCharacter<Character>, DecoratedElementCharacter<Integer>>();
+        	   //gr = readFile.readLinks(list_characters);
                break;
            case 2:
                System.out.println("Has seleccionado la opcion 2");
