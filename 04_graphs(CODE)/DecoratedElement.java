@@ -21,7 +21,7 @@ public class DecoratedElement<Character> implements Element{
 	}
 	@Override
 	public String getID() {
-		return null;
+		return ID;
 	}
 	public Character getElement() {
 		return element;

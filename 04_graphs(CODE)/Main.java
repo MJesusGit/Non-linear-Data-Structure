@@ -39,21 +39,12 @@ public static void menu() {
         	   System.out.println("Write the direction of the links file");
         	   String pathLk = read.nextLine();
         	   ReadFile readFile = new ReadFile(pathCh, pathLk);
-        	   Graph gr = new TreeMapGraph<>();
+        	   Graph<DecoratedElement<Character>, DecoratedElement<Integer>> gr = new TreeMapGraph<DecoratedElement<Character>, DecoratedElement<Integer>>();
         	   gr = readFile.readCharacters();
-        	   readFile.readLinks(gr);
-        	   //Graph<DecoratedElementCharacter<Character>, DecoratedElementCharacter<Integer>> gr = new TreeMapGraph<DecoratedElementCharacter<Character>, DecoratedElementCharacter<Integer>>();
-        	   //gr = readFile.readLinks(list_characters);
+        	   gr = readFile.readLinks(gr);
                break;
            case 2:
-        	   boolean find=Objectives.subsets(gr);
-        	   
-               if(!find) {
-            	   System.out.print("There is not subsets");
-            	 
-               }else {
-            	   System.out.print("There is  subsets");
-               }
+               System.out.println("Has seleccionado la opcion 2");
                break;
             case 3:
                System.out.println("Has seleccionado la opcion 3");
