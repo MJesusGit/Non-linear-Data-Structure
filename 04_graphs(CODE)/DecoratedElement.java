@@ -57,9 +57,5 @@ public class DecoratedElement<Character> implements Element {
 	public void setDistance(int distance) {
 		this.distance = distance;
 	}
-
-	public boolean equals(Object n) {
-		return (ID.equals(((DecoratedElement) n).getID())
-				&& element.equals(((DecoratedElement<Character>) n).getElement()));
-	}
+	
 }
