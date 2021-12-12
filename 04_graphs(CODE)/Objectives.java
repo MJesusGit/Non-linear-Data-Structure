@@ -79,4 +79,35 @@ public class Objectives {
 		}
 		System.out.println("With " + highestInteraction + " points");
 	}
+	
+	public static void DFS(Graph gr , Vertex<DecoratedElement> v) {
+		Iterator <Edge> it =null;
+		Vertex<DecoratedElement> w =null;
+		Edge e =null;
+		v.getElement().setVisited(true);
+		it=gr.incidentEdges(v);
+		while(it.hasNext()) {
+			e=it.next();
+			w=gr.opposite(v, e);
+			if(!w.getElement().getVisited()) {
+				DFS(gr,w);
+			}
+		}
+	}
+	public static boolean subsets(Graph gr) {
+		boolean subset=true;
+		Vertex<DecoratedElement> it= null;
+		it=gr.getVertex();
+		if(it.hasNext()) {
+			aux=it.next();
+			DFS(gr,aux);			
+		}
+		it=gr.getVertices();
+		while(it.hasNext() && subset) {
+			aux=it.next();
+			subset=aux.getElement().getVisited();			
+		}
+		return subset;
+	}
+	
 }
