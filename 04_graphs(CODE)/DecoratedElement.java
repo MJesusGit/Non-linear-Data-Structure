@@ -1,4 +1,4 @@
-package graphs;
+package graph;
 
 import graphsDSESIUCLM.*;
 
@@ -57,5 +57,4 @@ public class DecoratedElement<Character> implements Element {
 	public void setDistance(int distance) {
 		this.distance = distance;
 	}
-	
 }

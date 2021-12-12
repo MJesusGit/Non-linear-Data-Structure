@@ -42,8 +42,6 @@ public class ReadFile {
 	}
 
 	public Graph<DecoratedElement<Character>, DecoratedElement<Integer>> readLinks(Graph<DecoratedElement<Character>, DecoratedElement<Integer>> gr) {
-
-		int id = 0;
 		String line = "";
 		String[] tokens;
 		int relations = 0;
@@ -59,7 +57,6 @@ public class ReadFile {
 				String sourceID = tokens[0];
 				String targetID = tokens[1];
 				int weight = Integer.parseInt(tokens[2]);
-				Links link = new Links(sourceID, targetID, weight);
 				DecoratedElement<Integer> relationWeight = new DecoratedElement<Integer>(sourceID, weight);
 				gr.insertEdge(gr.getVertex(sourceID), gr.getVertex(targetID), relationWeight);
 				relations++;
@@ -77,4 +74,5 @@ public class ReadFile {
 		this.pathCh = pathCh;
 		this.pathLk = pathLk;
 	}
+
 }
