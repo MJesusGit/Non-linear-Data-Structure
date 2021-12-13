@@ -1,5 +1,10 @@
 package graph;
 
+/**
+ * @className Character
+ * @author Andrés González Varela, María Jesús Dueñas Recuero.
+ * @version 1.0
+ */
 public class Character {
 	private String ID;
 	private String name;

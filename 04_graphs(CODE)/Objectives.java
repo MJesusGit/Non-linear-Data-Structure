@@ -6,8 +6,25 @@ import java.util.*;
 import graph.Character;
 import graphsDSESIUCLM.*;
 
+/**
+ * @className Objectives
+ * @author Andrés González Varela, Maria Jesús Dueñas Recuero
+ * @version 1.0
+ * @description This class is where we will be executing all the methods to fullfil the requirements
+ * @date 12-12-21
+ */
 public class Objectives {
 
+	/**
+	 * @MethodName moreRelations
+	 * @author Andrés González Varela, Maria Jesús Dueñas Recuero
+	 * @description In this method the idea is to go vertex by vertex until we complete all the vertex of the graph. We get
+	 *  			all the incident edges of each vertex and count them with the nInteractions variable. We check every time if 
+	 * 				this variable is equal to the actual maxInteractions. Then if the nInteractions is higher we change the value of 
+	 * 				maxInteractions and we store the Vertex in a Stack to print it after the execution. If the nInteractions is lower 
+	 * 				we will do nothing. Then we print the Name of the Character and the maxInteractions.
+	 * @param Graph<DecoratedElement<Character>, DecoratedElement<Integer>> gr.
+	 */
 	public void moreRelations(Graph<DecoratedElement<Character>, DecoratedElement<Integer>> gr) {
 		int nInteractions = 0;
 		int maxInteractions = 0;
@@ -43,6 +60,15 @@ public class Objectives {
 		System.out.println("Number of interactions with different characters: " + maxInteractions);
 	}
 	
+	/**
+	 * @MethodName moreInteractions
+	 * @author Andrés González Varela, Maria Jesús Dueñas Recuero
+	 * @description The idea here is similar to the moreRelation method. But we will be checking the weight of the Edge 
+	 * 				We check each vertex edges and the check weight by weight until we end travel the graph. If the weight
+	 * 				is higher we pop the pair of previopus characters and then we push the new ones. After all the vertex 
+	 * 				are checked we print the characters information and the higherInteraction.
+	 * @param Graph<DecoratedElement<Character>, DecoratedElement<Integer>> gr.
+	 */
 	public void moreInteraction(Graph<DecoratedElement<Character>, DecoratedElement<Integer>> gr) {
 		int highestInteraction = 0;
 		int interaction = 0;
@@ -79,35 +105,4 @@ public class Objectives {
 		}
 		System.out.println("With " + highestInteraction + " points");
 	}
-	
-	public static void DFS(Graph gr , Vertex<DecoratedElement> v) {
-		Iterator <Edge> it =null;
-		Vertex<DecoratedElement> w =null;
-		Edge e =null;
-		v.getElement().setVisited(true);
-		it=gr.incidentEdges(v);
-		while(it.hasNext()) {
-			e=it.next();
-			w=gr.opposite(v, e);
-			if(!w.getElement().getVisited()) {
-				DFS(gr,w);
-			}
-		}
-	}
-	public static boolean subsets(Graph gr) {
-		boolean subset=true;
-		Vertex<DecoratedElement> it= null;
-		it=gr.getVertex();
-		if(it.hasNext()) {
-			aux=it.next();
-			DFS(gr,aux);			
-		}
-		it=gr.getVertices();
-		while(it.hasNext() && subset) {
-			aux=it.next();
-			subset=aux.getElement().getVisited();			
-		}
-		return subset;
-	}
-	
 }

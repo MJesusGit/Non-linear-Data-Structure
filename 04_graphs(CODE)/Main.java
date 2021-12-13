@@ -1,4 +1,4 @@
-package graphs;
+package graph;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -8,22 +8,42 @@ import java.io.Reader;
 
 import java.util.*;
 
-import graphs.Character;
+import graph.Character;
 import graphsDSESIUCLM.Graph;
 import graphsDSESIUCLM.TreeMapGraph;
 import graphsDSESIUCLM.Vertex;
 
+/**
+ * @className Main
+ * @author Andrés González Varela, Maria Jesús Dueñas Recuero
+ * @version 1.0
+ * @description This class is the entry point of our java program,It is where
+ *              the project will be execute.
+ * @date 12-12-21
+ */
 public class Main {
-
 	public static final String SEPARATOR = ";";
 	public static final String COMMAS = ",";
-
+	/**
+	 * @className main
+	 * @author Andrés González Varela, Maria Jesús Dueñas Recuero
+	 * @version 1.0
+	 * @description We call here the method menu to execute and choose the options of the program
+	 * @throws IOException
+	 * @date 12-12-21
+	 */
 	public static void main(String[] args) throws IOException {
-
 		menu();
-
 	}
-
+	
+	/**
+	 * @className menu
+	 * @author Andrés González Varela, Maria Jesús Dueñas Recuero
+	 * @version 1.0
+	 * @description This method contains a menu with all the options of the requirements. We will ask for the location of the 
+	 * 				files and 
+	 * @date 12-12-21
+	 */
 	public static void menu() {
 		Scanner reader = new Scanner(System.in);
 		boolean exit = false;
@@ -51,8 +71,6 @@ public class Main {
 					System.out.println("Write the direction of the links file");
 					String pathLk = read.nextLine();
 					ReadFile readFile = new ReadFile(pathCh, pathLk);
-					// Graph<DecoratedElement<Character>, DecoratedElement<Integer>> gr = new
-					// TreeMapGraph<DecoratedElement<Character>, DecoratedElement<Integer>>();
 					gr = readFile.readCharacters();
 					gr = readFile.readLinks(gr);
 					objectives.moreRelations(gr);
@@ -62,7 +80,7 @@ public class Main {
 					System.out.println("Has seleccionado la opcion 2");
 					break;
 				case 3:
-
+					System.out.println("Has seleccionado la opcion 3");
 					// We write the names of the characters that will send and receive the message
 					System.out.println("Write the character that will send the message");
 					Scanner viewer = new Scanner(System.in);
@@ -111,16 +129,15 @@ public class Main {
 						}
 					
 					break;
-					case 4:
+				case 4:
 					System.out.println("Thank you for watching");
 					exit = true;
 					break;
-					
 				default:
 					System.out.println("Only number amount 1 and 4");
 				}
+
 			}
-			
 
 		} catch (InputMismatchException e) {
 			System.out.println("Insert only number please.Try again:");
@@ -128,5 +145,5 @@ public class Main {
 
 		}
 	}
-}
 
+}

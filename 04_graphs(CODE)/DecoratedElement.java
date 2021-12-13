@@ -2,6 +2,12 @@ package graph;
 
 import graphsDSESIUCLM.*;
 
+
+/**
+ * @className DecoratedElement
+ * @author Andrés González Varela, María Jesús Dueñas Recuero.
+ * @version 1.0
+ */
 public class DecoratedElement<Character> implements Element {
 	private String ID;
 	private Character element;

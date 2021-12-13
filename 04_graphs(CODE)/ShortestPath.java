@@ -1,4 +1,5 @@
-package graphs;
+package graph;
+
 
 import java.util.*;
 import graphsDSESIUCLM.*;

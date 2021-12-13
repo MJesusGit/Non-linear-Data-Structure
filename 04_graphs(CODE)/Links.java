@@ -1,5 +1,10 @@
 package graph;
 
+/**
+ * @className Links
+ * @author Andrés González Varela, María Jesús Dueñas Recuero.
+ * @version 1.0
+ */
 public class Links {
 
 	private String sourceID;
