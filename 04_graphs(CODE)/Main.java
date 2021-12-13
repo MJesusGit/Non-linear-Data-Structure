@@ -33,7 +33,7 @@ public class Main {
 		DecoratedElement<Character> node = null;
 		int size;
 		boolean bool1 = true, bool2 = true;
-		Vertex<DecoratedElement<Character>> aux, t, s = null;
+		Vertex<DecoratedElement<Character>> aux, t=null, s = null;
 		Stack<DecoratedElement> sp = new Stack<DecoratedElement>();
 		Iterator<Vertex<DecoratedElement<Character>>> it;
 		Graph<DecoratedElement<Character>, DecoratedElement<Integer>> gr = new TreeMapGraph<DecoratedElement<Character>, DecoratedElement<Integer>>();
@@ -85,16 +85,13 @@ public class Main {
 							bool2 = false;
 						}
 					}
-					// When we complete the search, the need to ensure that they have good
-					// relationship
-					if (ShortestPath.checktrust(gr, s, t) == true) {
 						// When the condition gets verified, we can proceed sending or not the message
 						if (!(bool1 || bool2)) {
-							node = ShortestPath.findshortestconection(gr, s, t);
+							node = ShortestPath.findshortestconnection(gr, s, t);
 							if (node.getParent() == null) {
-								System.out.println("\nThere is no path");
+								System.out.println("\nThe message can't be sent. The intermediaries haven't a good relationship.");
 							} else {
-								System.out.println("\nPath");
+								System.out.println("\nThe message will be sent through: ");
 								while (node.getParent() != null) {
 									sp.push(node);
 									node = node.getParent();
@@ -110,21 +107,20 @@ public class Main {
 								System.out.print(node.getElement().toString() + "(" + node.getDistance() + ")");
 							}
 						} else {
-							System.out.println("\nAt least one of the nodes is not in the graph");
+							System.out.println("\nTry again to correctly read the info of the file by selecting option 1.");
 						}
-					} else {
-						System.out.println("It can't be possible, they have no good relationship");
-					}
+					
 					break;
-				case 4:
+					case 4:
 					System.out.println("Thank you for watching");
 					exit = true;
 					break;
+					
 				default:
 					System.out.println("Only number amount 1 and 4");
 				}
-
 			}
+			
 
 		} catch (InputMismatchException e) {
 			System.out.println("Insert only number please.Try again:");
@@ -132,5 +128,5 @@ public class Main {
 
 		}
 	}
-
 }
+
