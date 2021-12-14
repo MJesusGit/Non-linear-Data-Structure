@@ -46,7 +46,7 @@ public class ReadFile {
 				characters++;
 			}
 
-			System.out.println("The number of characters is: " + characters + "\n");
+			System.out.println("a) The number of characters is: " + characters + "\n");
 		} catch (IOException e) {
 			System.err.println("Error");
 			System.err.println(e.getMessage());
@@ -85,7 +85,7 @@ public class ReadFile {
 				relations++;
 			}
 
-			System.out.println("The total number of relations is: " + relations + "\n");
+			System.out.println("b) The total number of relations is: " + relations + "\n");
 		} catch (IOException e) {
 			System.err.println("Error");
 			System.err.println(e.getMessage());

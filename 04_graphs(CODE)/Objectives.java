@@ -52,12 +52,12 @@ public class Objectives {
 			}
 			nInteractions = 0;
 		}
-		System.out.println("Most sociable character: ");
+		System.out.print("c) The character with mos interactions is: "+" ");
 
 		while (!largestVertex.isEmpty()) {
-			System.out.println("\t" + largestVertex.pop().getElement().getElement());
+			System.out.print(largestVertex.pop().getElement().getElement().getName());
 		}
-		System.out.println("Number of interactions with different characters: " + maxInteractions);
+		System.out.print(" with an amount of interactions with different characters: " + maxInteractions+"\n");
 	}
 	
 	/**
@@ -99,10 +99,42 @@ public class Objectives {
 				}
 			}
 		}
-		System.out.println("The characters that has the highest level of interaction are: ");
+		System.out.println("d) The characters that has the highest level of interaction are: ");
 		while (!pairOfCharacters.isEmpty()) {
-			System.out.println("\t" + pairOfCharacters.pop().getElement().getElement());
+			System.out.println("\t" + pairOfCharacters.pop().getElement().getElement().getName());
 		}
 		System.out.println("With " + highestInteraction + " points");
+	}
+	public static void DFS(Graph gr, Vertex<DecoratedElement<String>> aux) {
+		Iterator <Edge> it =null;
+		Vertex<DecoratedElement<String>> w=null;
+		Edge e= null;
+		aux.getElement().setVisited(true);
+		it=gr.incidentEdges(aux);
+		while(it.hasNext()) {
+			e=it.next();
+			w=gr.opposite(aux,e);
+			if(!w.getElement().isVisited()) {
+				DFS(gr,w);
+			}
+		}
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public static boolean subsets(Graph gr) {
+		boolean subset = true;
+		Vertex<DecoratedElement<String>> aux = null;
+		Iterator<Vertex<DecoratedElement<String>>> it= null;
+		it = gr.getVertices();
+		if (it.hasNext()) {
+			aux = it.next();
+			DFS(gr, aux);
+		}
+		it = gr.getVertices();
+		while (it.hasNext() && subset) {
+			aux = it.next();
+			subset = aux.getElement().isVisited();
+		}
+		return subset;
 	}
 }
