@@ -7,7 +7,7 @@ import graphsDSESIUCLM.*;
 public class ShortestPath {
 
 	// BFS to find the shortest connection between two characters
-	public static DecoratedElement findshortestconnection(Graph g, Vertex<DecoratedElement<Character>> s, Vertex<DecoratedElement<Character>> t) {
+	public static DecoratedElement<Character> findshortestconnection(Graph g, Vertex<DecoratedElement<Character>> s, Vertex<DecoratedElement<Character>> t) {
 
 		Queue<Vertex<DecoratedElement<Character>>> q = new LinkedList();
 		boolean noEnd = true;
@@ -23,7 +23,7 @@ public class ShortestPath {
 			while (it.hasNext() && noEnd) {
 				e = it.next();
 				v = g.opposite(u, e);
-				if (!(v.getElement()).isVisited() && checktrust(g, v)) {
+				if (!(v.getElement()).isVisited() && checktrust(g, v) == true) {
 					(v.getElement()).setVisited(true);
 					(v.getElement()).setParent(u.getElement());
 					(v.getElement()).setDistance(((u.getElement()).getDistance()) + 1);
@@ -46,6 +46,7 @@ public class ShortestPath {
 		int degree = 0;
 		do {
 			degree++;
+			it.next();
 		} while (it.hasNext());
 
 		if (degree >= 8) {
