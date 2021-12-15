@@ -1,14 +1,9 @@
 package graph;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
-
 import java.util.*;
 
-import graph.Character;
+import graphsDSESIUCLM.Edge;
 import graphsDSESIUCLM.Graph;
 import graphsDSESIUCLM.TreeMapGraph;
 import graphsDSESIUCLM.Vertex;
@@ -51,7 +46,8 @@ public class Main {
 		boolean exit = false;
 		int option; // Guardaremos la opción del usuario
 		Objectives objectives = new Objectives();
-		DecoratedElement startNode, endNode, nx = null;
+		//String startNode, endNode; 
+		String nx = null;
 		DecoratedElement<Character> node = null;
 		int size;
 		boolean bool1 = true, bool2 = true;
@@ -66,6 +62,7 @@ public class Main {
 						"-----------------------------\nWELCOME TO OUR STAR WARS PROGRAM\n-----------------------------\n[1]. Statistics of the file\n[2]. Characters that are not related to each other\n[3]. Holo-message secretly through trusted intermediaries\n[4]. Exit\n\nChoose an option:");
 				option = reader.nextInt();
 				switch (option) {
+
 				case 1:
 					System.out.println("Write the direction of the characters file");
 					Scanner read = new Scanner(System.in);
@@ -78,6 +75,7 @@ public class Main {
 					objectives.moreRelations(gr);
 					objectives.moreInteraction(gr);
 					break;
+
 				case 2:
 					boolean find = Objectives.subsets(gr);
 
@@ -88,25 +86,26 @@ public class Main {
 						System.out.print("There is  subsets\n");
 					}
 					break;
+
 				case 3:
 					// We write the names of the characters that will send and receive the message
-					System.out.println("Write the character that will send the message");
+					System.out.println("Write the name of the character that will send the message");
 					Scanner viewer = new Scanner(System.in);
-					startNode = new DecoratedElement(reader.next(), viewer);
-					System.out.println("Write the character that will receive the message");
-					endNode = new DecoratedElement(reader.next(), viewer);
+					String startNode = viewer.next();
+					System.out.println("Write the name of the character that will receive the message");
+					String endNode = viewer.next();
 					// We get the vertices that our graph includes
 					it = gr.getVertices();
 					// We go all over the graph comparing the name we wrote and the name of each of
 					// the vertices
 					while (it.hasNext() && (bool1 || bool2)) {
 						aux = it.next();
-						nx = aux.getElement();
-						if (nx.equals(startNode)) {
+						nx = aux.getID();
+						if (nx == startNode) {
 							s = aux;
 							bool1 = false;
 						}
-						if (nx.equals(endNode)) {
+						if (nx == endNode) {
 							t = aux;
 							bool2 = false;
 						}
@@ -137,10 +136,12 @@ public class Main {
 					}
 
 					break;
+
 				case 4:
 					System.out.println("Thank you for watching");
 					exit = true;
 					break;
+
 				default:
 					System.out.println("Only number amount 1 and 4");
 				}
@@ -153,5 +154,4 @@ public class Main {
 
 		}
 	}
-
 }
